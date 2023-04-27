@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Add from '../img/add-image.png';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, storage, db } from '../firebase';
-import { async } from '@firebase/util';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore"; 
 import { useNavigate, Link } from 'react-router-dom';

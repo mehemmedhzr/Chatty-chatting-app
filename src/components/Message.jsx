@@ -1,8 +1,6 @@
-import { ref } from 'firebase/storage';
 import React, { useContext, useEffect, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { ChatContext } from '../context/ChatContext';
-import User from '../img/user.png';
 
 const Message = ({ message }) => {
 
@@ -14,6 +12,25 @@ const Message = ({ message }) => {
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
+
+  const date = new Date(message.timestamp);
+  const formattedTime = `${date.getHours()}:${date.getMinutes()}`;
+
+  const dateArray = Object.entries(message.date);
+  // console.log(dateArray)
+
+  const handleTimestamp = [
+    dateArray[0],
+    dateArray[1]
+  ];
+
+  const milliseconds = handleTimestamp[0][1] * 1000 + handleTimestamp[1][1] / 1000000;
+  const messageDate = new Date(milliseconds);
+
+  const hour = messageDate.getHours();
+  const minute = messageDate.getMinutes();
+  console.log(hour + ":" + minute);
+  // console.log(handleTimestamp[0][1])
 
   return (
     <div
@@ -29,7 +46,7 @@ const Message = ({ message }) => {
           }
           alt=""
         />
-        <span>just now</span>
+        <span>{hour + ":" + minute}</span> 
       </div>
       <div className="messageContent">
         <p>{message.text}</p>
