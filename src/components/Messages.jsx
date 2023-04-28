@@ -2,6 +2,7 @@ import { doc, onSnapshot } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react'
 import { ChatContext } from '../context/ChatContext';
 import { db } from '../firebase';
+import Input from './Input';
 import Message from './Message'
 
 const Messages = () => {
@@ -19,6 +20,7 @@ const Messages = () => {
       unSub()
     }
   },[data.chatId])
+
 
   return (
     <section className='messages'>

@@ -3,6 +3,7 @@ import { AuthContext } from '../context/AuthContext';
 import { ChatContext } from '../context/ChatContext';
 
 const Message = ({ message }) => {
+  // console.log(message)
 
   const {currentUser} = useContext(AuthContext);
   const {data} = useContext(ChatContext);
@@ -29,7 +30,7 @@ const Message = ({ message }) => {
 
   const hour = messageDate.getHours();
   const minute = messageDate.getMinutes();
-  console.log(hour + ":" + minute);
+  // console.log(hour + ":" + minute);
   // console.log(handleTimestamp[0][1])
 
   return (

@@ -25,7 +25,6 @@ const Input = () => {
 
       uploadTask.on(
         (error) => {
-          //TODO:Handle Error
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -71,6 +70,18 @@ const Input = () => {
     setImg(null);
   }
 
+  const existMessage = () => {
+    if (text.trim() !== ""){
+      handleSend()
+    }
+    else if(text.trim() === "" && img !== null){
+      handleSend()
+    }
+    else{
+      window.alert("This field cannot be empty!")
+    }
+  }
+
   return (
     <section className='input'>
       <input type="text" placeholder='Type something...' onChange={e=>setText(e.target.value)} value={text} />
@@ -80,7 +91,10 @@ const Input = () => {
         <label htmlFor="file" className='input-addImage'>
             <img src={Img} alt="" />
         </label>
-        <button onClick={handleSend}>Send</button>
+        <button onClick={existMessage}>Send</button>
+      </div>
+      <div className={`ifHasImg ${img !== null && "noneD"}`}>
+        <span>Image is chosen.</span>
       </div>
     </section>
   )

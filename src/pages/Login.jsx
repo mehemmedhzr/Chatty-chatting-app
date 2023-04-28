@@ -27,6 +27,8 @@ const Login = () => {
     
   }
 
+  console.log(err)
+
   return (
     <div>
       <section className='formContainer'>
@@ -36,8 +38,8 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <input type="email" placeholder='E-mail'/>
                 <input type="password" placeholder='Password'/>
-                <button>Sign in</button>
-                {err && <span>Something went wrong...</span>}
+                <button>Log in</button>
+                {err && <span>Wrong username or password!</span>}
             </form>
             <p>You don't have an account? <Link to="/register">Register</Link></p>
         </section>
